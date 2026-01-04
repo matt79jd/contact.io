@@ -63,7 +63,7 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      overflow: visible; /* allow logo pop animation */
+      overflow: visible;
     }
 
     .topGlow{
@@ -87,27 +87,26 @@
       place-items: center;
     }
 
-    /* LOGO + ANIMATION */
+    /* BREATHING LOGO */
     .logo{
       max-width: 220px;
       width: 100%;
       height: auto;
       display: block;
       filter: drop-shadow(0 10px 18px rgba(0,0,0,.25));
-      transform-origin: 50% 50%;
-      animation: logoPop 900ms cubic-bezier(.2, .9, .25, 1) 120ms both;
-      will-change: transform;
+      animation: breathe 6s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
     @media (prefers-reduced-motion: reduce) {
       .logo { animation: none; }
     }
 
-    @keyframes logoPop {
-      0%   { transform: scale(0); }
-      55%  { transform: scale(3.8); }
-      75%  { transform: scale(0.92); }
-      100% { transform: scale(1); }
+    @keyframes breathe {
+      0%   { transform: scale(1);    opacity: 1; }
+      30%  { transform: scale(1.035); opacity: .96; }
+      60%  { transform: scale(1);    opacity: 1; }
+      100% { transform: scale(1);    opacity: 1; }
     }
 
     h1{
@@ -124,7 +123,6 @@
       line-height: 1.35;
     }
 
-    /* PRIMARY BUTTON */
     .primary{
       display: block;
       width: 100%;
@@ -155,7 +153,6 @@
     .pill{
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       padding: 10px 12px;
       border-radius: 999px;
       border: 1px solid var(--border);
@@ -164,80 +161,4 @@
       text-decoration: none;
       font-weight: 650;
       font-size: 14px;
-      transition: transform .06s ease, opacity .12s ease;
-    }
-
-    .pill:active{
-      transform: scale(.98);
-      opacity: .9;
-    }
-
-    .footer{
-      border-top: 1px solid var(--border);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 14px;
-      background: rgba(0,0,0,.08);
-    }
-
-    @media (prefers-color-scheme: light){
-      .footer{ background: rgba(255,255,255,.35); }
-      .pill{ background: rgba(0,0,0,.03); }
-    }
-
-    .footer a{
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 14px;
-      transition: transform .06s ease, opacity .12s ease;
-    }
-
-    .footer a:active{
-      transform: scale(.99);
-      opacity: .92;
-    }
-  </style>
-</head>
-
-<body>
-  <main class="wrap">
-    <section class="card">
-      <div class="topGlow"></div>
-
-      <div class="content">
-        <div class="logoBox">
-          <img src="logo-graphic.png" alt="Acoustic Design Systems" class="logo" />
-        </div>
-
-        <h1>Matthew Dalangauskas</h1>
-        <p class="sub">
-          Acoustic Design Systems · Project Management<br />
-          Las Vegas, NV
-        </p>
-
-        <a class="primary" href="Matthew_Dalangauskas.vcf">
-          Add to Contacts
-        </a>
-
-        <div class="pillRow">
-          <a class="pill" href="tel:+17025289988">Call</a>
-          <a class="pill" href="mailto:matt@adslv.com">Email</a>
-        </div>
-      </div>
-
-      <div class="footer">
-        <a href="https://adslv.com" target="_blank" rel="noopener">Website</a>
-        <a href="https://maps.google.com/?q=Acoustic%20Design%20Systems%20Las%20Vegas" target="_blank" rel="noopener">Directions</a>
-      </div>
-    </section>
-  </main>
-</body>
-</html>
+      tra
