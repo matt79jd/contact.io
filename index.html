@@ -161,4 +161,80 @@
       text-decoration: none;
       font-weight: 650;
       font-size: 14px;
-      tra
+      transition: transform .06s ease, opacity .12s ease;
+    }
+
+    .pill:active{
+      transform: scale(.98);
+      opacity: .9;
+    }
+
+    .footer{
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 14px;
+      background: rgba(0,0,0,.08);
+    }
+
+    @media (prefers-color-scheme: light){
+      .footer{ background: rgba(255,255,255,.35); }
+      .pill{ background: rgba(0,0,0,.03); }
+    }
+
+    .footer a{
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: transform .06s ease, opacity .12s ease;
+    }
+
+    .footer a:active{
+      transform: scale(.99);
+      opacity: .92;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="topGlow"></div>
+
+      <div class="content">
+        <div class="logoBox">
+          <img src="logo-graphic.png" alt="Acoustic Design Systems" class="logo" />
+        </div>
+
+        <h1>Matthew Dalangauskas</h1>
+        <p class="sub">
+          Acoustic Design Systems · Project Manager<br />
+          Las Vegas, NV
+        </p>
+
+        <a class="primary" href="Matthew_Dalangauskas.vcf">
+          Add to Contacts
+        </a>
+
+        <div class="pillRow">
+          <a class="pill" href="tel:+17025289988">Call</a>
+          <a class="pill" href="mailto:matt@adslv.com">Email</a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a href="https://adslv.com" target="_blank" rel="noopener">Website</a>
+        <a href="https://maps.google.com/?q=Acoustic%20Design%20Systems%20Las%20Vegas" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
