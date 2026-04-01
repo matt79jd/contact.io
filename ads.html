@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#07111f" />
+  <title>Acoustic Design Systems</title>
+
+  <style>
+    :root{
+      --bg: #07111f;
+      --bg2: #0c1b30;
+      --card: rgba(255,255,255,.08);
+      --card2: rgba(255,255,255,.05);
+      --border: rgba(255,255,255,.13);
+      --text: rgba(255,255,255,.95);
+      --muted: rgba(255,255,255,.72);
+
+      --blue1: #35a0ff;
+      --blue2: #0d66e8;
+
+      --orange1: #ffb04d;
+      --orange2: #f06a1a;
+
+      --green1: #3fd48d;
+      --green2: #159b5d;
+
+      --shadow: 0 24px 60px rgba(0,0,0,.45);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 26px 16px;
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(53,160,255,.22), transparent 58%),
+        radial-gradient(900px 600px at 100% 20%, rgba(63,212,141,.14), transparent 55%),
+        radial-gradient(900px 700px at 0% 100%, rgba(240,106,26,.12), transparent 58%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      overflow-x: hidden;
+    }
+
+    .bg-grid{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .12;
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+    }
+
+    .wrap{
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card{
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .card::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.08), transparent 30%, transparent 70%, rgba(255,255,255,.03));
+      pointer-events: none;
+    }
+
+    .topGlow{
+      position: absolute;
+      inset: -130px -100px auto -100px;
+      height: 260px;
+      background: radial-gradient(circle at 50% 60%, rgba(53,160,255,.28), transparent 62%);
+      pointer-events: none;
+    }
+
+    .content{
+      padding: 28px 22px 22px;
+      text-align: center;
+      position: relative;
+    }
+
+    .logoBox{
+      width: 220px;
+      height: 100px;
+      margin: 4px auto 18px;
+      display: grid;
+      place-items: center;
+    }
+
+    .logo{
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+      display: block;
+      transform-origin: 50% 50%;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.26));
+      animation: breathe 5.4s ease-in-out infinite;
+      will-change: transform, filter;
+    }
+
+    @keyframes breathe {
+      0%   { transform: scale(1);     filter: drop-shadow(0 10px 18px rgba(0,0,0,.26)); }
+      42%  { transform: scale(1.085); filter: drop-shadow(0 18px 32px rgba(0,0,0,.36)); }
+      72%  { transform: scale(1.02);  filter: drop-shadow(0 12px 22px rgba(0,0,0,.29)); }
+      100% { transform: scale(1);     filter: drop-shadow(0 10px 18px rgba(0,0,0,.26)); }
+    }
+
+    h1{
+      margin: 6px 0 8px;
+      font-size: 30px;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+
+    .sub{
+      margin: 0 auto 20px;
+      max-width: 460px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .panel-label{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.82);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .panel-label .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #3fd48d;
+      box-shadow: 0 0 0 6px rgba(63,212,141,.12);
+    }
+
+    .tileGrid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 6px;
+    }
+
+    .tile{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+      padding: 18px 16px 16px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: #fff;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 16px 30px rgba(0,0,0,.18);
+      transition: transform .12s ease, box-shadow .18s ease, opacity .12s ease;
+      isolation: isolate;
+    }
+
+    .tile:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 24px 36px rgba(0,0,0,.24);
+    }
+
+    .tile:active{
+      transform: scale(.985);
+      opacity: .96;
+    }
+
+    .tile::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.18), transparent 26%),
+        radial-gradient(circle at 20% 15%, rgba(255,255,255,.18), transparent 25%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tile::after{
+      content: "";
+      position: absolute;
+      top: -40%;
+      left: -35%;
+      width: 45%;
+      height: 180%;
+      background: linear-gradient(
+        90deg,
+        rgba(255,255,255,0),
+        rgba(255,255,255,.34),
+        rgba(255,255,255,0)
+      );
+      transform: rotate(18deg) translateX(-140%);
+      animation: sheen 4.2s ease-in-out infinite;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes sheen{
+      0%, 62% { transform: rotate(18deg) translateX(-140%); opacity: 0; }
+      72%     { opacity: .9; }
+      92%     { transform: rotate(18deg) translateX(340%); opacity: 0; }
+      100%    { opacity: 0; }
+    }
+
+    .website{
+      background: linear-gradient(180deg, var(--blue1), var(--blue2));
+    }
+
+    .ticket{
+      background: linear-gradient(180deg, var(--orange1), var(--orange2));
+    }
+
+    .call{
+      background: linear-gradient(180deg, var(--green1), var(--green2));
+    }
+
+    .tileTop,
+    .tileBottom{
+      position: relative;
+      z-index: 1;
+    }
+
+    .icon{
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.20);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.20);
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .tileTitle{
+      margin-top: 18px;
+      font-size: 19px;
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+      text-align: left;
+    }
+
+    .tileDesc{
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.35;
+      color: rgba(255,255,255,.90);
+      text-align: left;
+    }
+
+    .tileCta{
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.96);
+    }
+
+    .footerMeta{
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .phone{
+      color: var(--text);
+      font-weight: 800;
+      font-size: 16px;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 640px){
+      .tileGrid{
+        grid-template-columns: 1fr;
+      }
+
+      .tile{
+        min-height: 150px;
+      }
+
+      h1{
+        font-size: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .logo,
+      .tile::after{
+        animation: none;
+      }
+
+      .tile{
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid"></div>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="topGlow"></div>
+
+      <div class="content">
+        <div class="logoBox">
+          <img src="logo-graphic.png" alt="Acoustic Design Systems" class="logo" />
+        </div>
+
+        <h1>Acoustic Design Systems</h1>
+        <p class="sub">
+          Smart home, audio, video, security, lighting, and support — built to feel seamless.
+        </p>
+
+        <div class="panel-label">
+          <span class="dot"></span>
+          Smart Access Panel
+        </div>
+
+        <div class="tileGrid">
+          <a class="tile website" href="https://www.adslv.com/" target="_blank" rel="noopener">
+            <div class="tileTop">
+              <div class="icon">⌂</div>
+              <div class="tileTitle">Website</div>
+              <div class="tileDesc">Explore Acoustic Design Systems and see what’s possible.</div>
+            </div>
+            <div class="tileBottom">
+              <div class="tileCta">Open Site →</div>
+            </div>
+          </a>
+
+          <a class="tile ticket" href="https://adslvhelp.zendesk.com/" target="_blank" rel="noopener">
+            <div class="tileTop">
+              <div class="icon">⚙</div>
+              <div class="tileTitle">Service Ticket</div>
+              <div class="tileDesc">Have a problem? Create a ticket and get support started fast.</div>
+            </div>
+            <div class="tileBottom">
+              <div class="tileCta">Get Help →</div>
+            </div>
+          </a>
+
+          <a class="tile call" href="tel:+17026487474">
+            <div class="tileTop">
+              <div class="icon">✆</div>
+              <div class="tileTitle">Call ADS</div>
+              <div class="tileDesc">Talk to Acoustic Design Systems directly when you need us.</div>
+            </div>
+            <div class="tileBottom">
+              <div class="tileCta">Call Now →</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="footerMeta">
+          Acoustic Design Systems<br />
+          <div class="phone">702-648-7474</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
