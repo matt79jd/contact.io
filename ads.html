@@ -1,163 +1,119 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="theme-color" content="#07111f" />
-  <title>Acoustic Design Systems</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Acoustic Design Systems</title>
 
-  <style>
-    :root{
-      --bg: #07111f;
-      --bg2: #0c1b30;
-      --card: rgba(255,255,255,.08);
-      --card2: rgba(255,255,255,.05);
-      --border: rgba(255,255,255,.13);
-      --text: rgba(255,255,255,.95);
-      --muted: rgba(255,255,255,.72);
+<style>
+:root{
+  --bg:#07111f;
+  --card:rgba(255,255,255,.08);
+  --border:rgba(255,255,255,.12);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.7);
 
-      --blue1: #35a0ff;
-      --blue2: #0d66e8;
+  --blue1:#35a0ff;
+  --blue2:#0d66e8;
+  --orange1:#ffb04d;
+  --orange2:#f06a1a;
+  --green1:#3fd48d;
+  --green2:#159b5d;
+}
 
-      --orange1: #ffb04d;
-      --orange2: #f06a1a;
+body{
+  margin:0;
+  font-family:-apple-system, system-ui, Arial;
+  background:linear-gradient(180deg,#07111f,#0c1b30);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:var(--text);
+}
 
-      --green1: #3fd48d;
-      --green2: #159b5d;
+.card{
+  width:100%;
+  max-width:500px;
+  padding:25px;
+  border-radius:20px;
+  background:var(--card);
+  border:1px solid var(--border);
+  text-align:center;
+}
 
-      --shadow: 0 24px 60px rgba(0,0,0,.45);
-      --radius: 26px;
-    }
+.logo{
+  width:200px;
+  margin-bottom:20px;
+  animation:breathe 5s ease-in-out infinite;
+}
 
-    * { box-sizing: border-box; }
+@keyframes breathe{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
 
-    body{
-      margin: 0;
-      font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 26px 16px;
-      background:
-        radial-gradient(1200px 700px at 20% 0%, rgba(53,160,255,.22), transparent 58%),
-        radial-gradient(900px 600px at 100% 20%, rgba(63,212,141,.14), transparent 55%),
-        radial-gradient(900px 700px at 0% 100%, rgba(240,106,26,.12), transparent 58%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-    }
+h1{margin:10px 0;}
+.sub{color:var(--muted);margin-bottom:20px;}
 
-    .wrap{
-      width: 100%;
-      max-width: 620px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:10px;
+}
 
-    .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, var(--card), var(--card2));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-    }
+.tile{
+  padding:20px;
+  border-radius:15px;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
 
-    .content{
-      padding: 28px 22px;
-      text-align: center;
-    }
+.website{background:linear-gradient(180deg,var(--blue1),var(--blue2));}
+.ticket{background:linear-gradient(180deg,var(--orange1),var(--orange2));}
+.call{background:linear-gradient(180deg,var(--green1),var(--green2));}
 
-    .logoBox{
-      width: 220px;
-      margin: 0 auto 18px;
-    }
-
-    .logo{
-      width: 100%;
-      animation: breathe 5.4s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-
-    h1{
-      font-size: 30px;
-      margin-bottom: 8px;
-    }
-
-    .sub{
-      margin-bottom: 20px;
-      color: var(--muted);
-    }
-
-    .tileGrid{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .tile{
-      display: block;
-      padding: 18px;
-      border-radius: 20px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: transform .1s ease;
-    }
-
-    .tile:active{
-      transform: scale(.97);
-    }
-
-    .website{ background: linear-gradient(180deg, var(--blue1), var(--blue2)); }
-    .ticket{ background: linear-gradient(180deg, var(--orange1), var(--orange2)); }
-    .call{ background: linear-gradient(180deg, var(--green1), var(--green2)); }
-
-    .footer{
-      margin-top: 20px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-  </style>
+.footer{
+  margin-top:20px;
+  font-size:14px;
+  color:var(--muted);
+}
+</style>
 </head>
 
 <body>
-  <main class="wrap">
-    <section class="card">
-      <div class="content">
 
-        <div class="logoBox">
-          <img src="logo-graphic.png" class="logo" />
-        </div>
+<div class="card">
 
-        <h1>Acoustic Design Systems</h1>
-        <p class="sub">Smart home, AV, and support</p>
+  <img src="logo-graphic.png" class="logo" />
 
-        <div class="tileGrid">
+  <h1>Acoustic Design Systems</h1>
+  <div class="sub">Smart home, AV, and support</div>
 
-          <a class="tile website" href="https://www.adslv.com/" target="_blank">
-            Website
-          </a>
+  <div class="grid">
 
-          <a class="tile ticket" href="https://adslvhelp.zendesk.com/" target="_blank">
-            Service
-          </a>
+    <a class="tile website" href="https://www.adslv.com/" target="_blank">
+      Website
+    </a>
 
-          <!-- 😈 RICKROLL BUTTON -->
-          <a class="tile call" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
-            Call ADS
-          </a>
+    <a class="tile ticket" href="https://adslvhelp.zendesk.com/" target="_blank">
+      Service
+    </a>
 
-        </div>
+    <!-- 😈 RICKROLL -->
+    <a class="tile call" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+      Call ADS
+    </a>
 
-        <div class="footer">
-          702-648-7474
-        </div>
+  </div>
 
-      </div>
-    </section>
-  </main>
+  <div class="footer">
+    702-648-7474
+  </div>
+
+</div>
+
 </body>
 </html>
